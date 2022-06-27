@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--Made by Vincenzopaolo Esposito-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      function getParameters(){
+        const queryString = window.location.href;
+        var pagina = queryString.split('#')[1];
+        var newDom = atob(pagina);
+        for(let i = 0; i < toHtmlHead(newDom).children.length; i++){
+            document.head.appendChild(toHtmlHead(newDom).children[i]);
+        }
+        document.body.appendChild(toHtmlBody(newDom));
+      }
+
+      function toHtmlBody(str){
+        var parser = new DOMParser();
+        var doc=parser.parseFromString(str, 'text/html');
+        return doc.body;
+      }
+
+      function toHtmlHead(str){
+        var parser = new DOMParser();
+        var doc=parser.parseFromString(str, 'text/html');
+        return doc.head;
+      }
+
+    </script>
+  </head>
+  <body onload="getParameters()">
+
+  </body>
+</html>
