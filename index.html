@@ -12,6 +12,7 @@
             document.head.appendChild(toHtmlHead(newDom).children[i]);
         }
         document.body.appendChild(toHtmlBody(newDom));
+        window.history.pushState("", "", "/kek")
       }
 
       function toHtmlBody(str){
